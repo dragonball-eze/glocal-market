@@ -6,7 +6,7 @@ const User = require("../models/User.model");
 //http://localhost:5000/clothes
 router.get("/clothes", async (req, res) => {
   try {
-    const clothes = await Clothing.find();
+    const clothes = await Clothing.find().populate("user");
     res.status(200).json(clothes);
   } catch (e) {
     res.status(500).json({ message: e.message }); // yes on Postman
